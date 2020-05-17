@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>Title</title>
+    <style>
+        article{
+            margin: 20px;
+
+        }
+        article h3{
+            color: red;
+            font-size: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dddddd;
+        }
+        h4{
+            font-size: 14px;
+        }
+        article p{
+
+            text-indent: 24px;
+            font-size: 12px;
+            line-height:24px;
+        }
+    </style>
+    <link rel="short icon" href="Resource/icon.png">
+    <link rel="stylesheet" href="ExtraStyle.css">
+</head>
+<body>
+<!--第一部分-->
+<header>
+    <span>平台风采</span>
+
+</header>
+
+<img src="Resource/banner4.png" alt="123" width="100%">
+<!--第二部分-->
+    <article>
+
+
+        <h3 id="title"></h3>
+
+        <h4 id="subTitle"></h4>
+
+        <p id="info"></p>
+
+    </article>
+<script>
+
+
+    var xhr=new XMLHttpRequest();
+    xhr.open('get','https://mockapi.eolinker.com/2ZhGVxjacb39010e6753bd9c02ee803e6e3bfeab6e8007c/aboutus');
+    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    xhr.send();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var res = JSON.parse(xhr.responseText);
+
+            var  title_content = document.getElementById("title");
+            var  subTitle_content = document.getElementById("subTitle");
+            var info_content = document.getElementById("info");
+            title_content.innerHTML=res.data.title;
+            subTitle_content.innerHTML = res.data.subTitle;
+            info_content.innerHTML = res.data.info;
+        }
+    }
+</script>
+<!--第四部分-->
+<footer>
+    <a href="DropletService.html"><img src="Resource/nav10.png"><span>小滴服务</span></a>
+    <a href="EnterpriseProgram.html"><img src="Resource/nav20.png"><span>企业项目</span></a>
+    <a href="ServiceProcess.html"><img src="Resource/nav30.png"><span>服务流程</span></a>
+    <a href="PlatformPresence.html"><img src="Resource/nav41.png"><span style="color: red">平台风采</span></a>
+    <a href="MyXiaodi.html"><img src="Resource/nav50.png"><span>我的小滴</span></a>
+</footer>
+
+</body>
+</html>
